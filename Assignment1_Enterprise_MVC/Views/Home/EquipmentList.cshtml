@@ -1,0 +1,24 @@
+@model IEnumerable<EquipmentItem>
+@{ ViewData["Title"] = ViewBag.Heading; }
+
+<h2>@ViewBag.Heading</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr><th>Id</th><th>Type</th><th>Description</th><th>Available</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr class="@(item.IsAvailable ? "table-success" : "table-danger")">
+            <td>@item.Id</td>
+            <td>@item.Type</td>
+            <td>@item.Description</td>
+            <td>
+                @if (item.IsAvailable) { <span class="badge bg-success">Yes</span> }
+                else { <span class="badge bg-danger">No</span> }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

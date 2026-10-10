@@ -44,4 +44,20 @@ public class HomeController : Controller
 
     [HttpGet("Confirmation")]
     public IActionResult Confirmation() => View();
+    
+    [HttpGet("AllEquipment")]
+    public IActionResult AllEquipment()
+    {
+        ViewBag.Heading = "All Equipment";
+        return View("EquipmentList", Repository.AllEquipment);
+    }
+
+    [HttpGet("AvailableEquipment")]
+    public IActionResult AvailableEquipment()
+    {
+        ViewBag.Heading = "Available Equipment";
+        return View("EquipmentList", Repository.AvailableEquipment);
+    }
+    
+    
 }
