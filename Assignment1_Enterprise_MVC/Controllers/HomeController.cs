@@ -28,4 +28,20 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+    
+    [HttpGet("RequestForm")]
+    public IActionResult RequestForm() => View();
+
+    [HttpPost("RequestForm")]
+    public IActionResult RequestForm(EquipmentRequest request)
+    {
+        if (!ModelState.IsValid)
+            return View(request);
+
+        Repository.AddRequest(request);
+        return RedirectToAction("Confirmation");
+    }
+
+    [HttpGet("Confirmation")]
+    public IActionResult Confirmation() => View();
 }

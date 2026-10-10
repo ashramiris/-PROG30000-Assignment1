@@ -1,0 +1,54 @@
+@model EquipmentRequest
+
+@{
+    ViewData["Title"] = "Request Form";
+}
+
+<h2>Equipment Request Form</h2>
+
+<form asp-action="RequestForm" method="post" novalidate>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label">Phone (xxx-xxx-xxxx)</label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Role" class="form-label">Role</label>
+        <select asp-for="Role" asp-items="Html.GetEnumSelectList<Requester>()" class="form-select">
+            <option selected="selected" value="">Please select your role</option>
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="EquipmentType" class="form-label">Equipment type</label>
+        <select asp-for="EquipmentType" asp-items="Html.GetEnumSelectList<EquipmentType>()" class="form-select">
+            <option selected="selected" value="">Please select the device type</option>
+        </select>
+        <span asp-validation-for="EquipmentType" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Details" class="form-label">Request details</label>
+        <textarea asp-for="Details" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Details" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Duration" class="form-label">Duration (days)</label>
+        <input asp-for="Duration" type="number" class="form-control" />
+        <span asp-validation-for="Duration" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Request</button>
+</form>
+
