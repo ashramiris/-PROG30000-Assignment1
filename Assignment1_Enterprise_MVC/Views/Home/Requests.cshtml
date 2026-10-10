@@ -1,0 +1,25 @@
+@model IEnumerable<EquipmentRequest>
+@{ ViewData["Title"] = "Requests"; }
+
+<h2>Equipment Requests</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr><th>Id</th><th>Equipment</th><th>Name</th><th>Role</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var r in Model)
+    {
+        <tr>
+            <td>@r.Id</td>
+            <td>@r.EquipmentType</td>
+            <td>@r.Name</td>
+            <td>@r.Role</td>
+            <td>
+                <button type="button" class="btn btn-success btn-sm">Accept</button>
+                <button type="button" class="btn btn-danger btn-sm">Deny</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

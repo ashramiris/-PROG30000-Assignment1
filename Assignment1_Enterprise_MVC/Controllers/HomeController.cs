@@ -59,5 +59,6 @@ public class HomeController : Controller
         return View("EquipmentList", Repository.AvailableEquipment);
     }
     
-    
+    [HttpGet("Requests")]
+    public IActionResult Requests() => View(Repository.Requests);
 }
